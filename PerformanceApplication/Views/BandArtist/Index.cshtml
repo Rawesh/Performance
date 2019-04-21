@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PerformanceApplication.RouteConfig>
+
+@{
+    ViewBag.Title = "Bands and artists";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bands and artists</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Band 1</th>
+    </tr>
+
+    <tr>
+        <td>
+           @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+           @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+           @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+     </tr>
+</table>

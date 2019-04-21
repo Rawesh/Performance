@@ -1,0 +1,25 @@
+﻿@model PerformanceApplication.Models.BandArtist
+
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>create band or artist</h2>
+
+
+
+<form action="CreateSave" method="post">
+    <input type="text" name="name" placeholder="Name" runat="server"/>
+    <input type="text" name="description" placeholder="Description" runat="server"/>
+    <br />
+    <input type="submit" value="create" />
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
