@@ -29,8 +29,6 @@ namespace PerformanceApplication.Controllers
         {
             BandArtist band_artist = new BandArtist();
             band_artist.insert(name, description);
-            //to do
-            // send values to model to save in database
 
             return Content(name += description);
         }
