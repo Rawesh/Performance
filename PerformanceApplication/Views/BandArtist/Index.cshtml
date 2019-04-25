@@ -12,14 +12,17 @@
 </p>
 <table class="table">
     <tr>
-        <th>Band 1</th>
+        <th>Name Artist or Band</th>
+        <th>Description</th>
+        <th colspan="3">Actions</th>
     </tr>
 
     <tr>
-        <td>
-           @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-           @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-           @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-     </tr>
+        <td>Name of the band or artist</td>
+        <td>Description of the band or artist</td>
+        <td>@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+        <td>@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })</td>
+        <td>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</td>
+
+    </tr>
 </table>

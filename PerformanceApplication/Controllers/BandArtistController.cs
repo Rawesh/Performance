@@ -14,6 +14,11 @@ namespace PerformanceApplication.Controllers
         // get list of all bands and artists
         public ActionResult Index()
         {
+            //call the model function getAll
+            BandArtist band_artist = new BandArtist();
+            band_artist.getAll();
+
+            // return the view with the band_artist data
             return View();
         }
 
@@ -30,7 +35,7 @@ namespace PerformanceApplication.Controllers
             BandArtist band_artist = new BandArtist();
             band_artist.insert(name, description);
 
-            return Content(name += description);
+            return Redirect("index");
         }
 
     }
