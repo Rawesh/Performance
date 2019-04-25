@@ -4,17 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PerformanceApplication.Models
 {
     public class BandArtist
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
-        [Key]
         public string Name { get; set; }
         public string Descripiton { get; set; }
 
