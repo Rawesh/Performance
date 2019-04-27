@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
+using System.Data;
 using System.Configuration;
+using System.Data.SqlClient;
+
 
 namespace PerformanceApplication.Models
 {
@@ -33,19 +35,28 @@ namespace PerformanceApplication.Models
 
         }
 
-        public void getAll()
+        public virtual DataSet getAll()
         {
-            //open database connection
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
-            conn.Open();
-
-            //get the data from the database with the querybuilder
-            string insertQuery = "SELECT * FROM band_artist";
-            SqlCommand cmd = new SqlCommand(insertQuery, conn);
-            cmd.ExecuteNonQuery();
-
-            //closse databaseconnection
-            conn.Close();
+            //make a set of data
+            DataSet ds = new DataSet();
+            
+            //make connection with the database
+            string constr = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(constr))
+            {
+                //Make connection wth database and send query to database
+                string query = "SELECT * FROM band_artist";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                   //transfering the data from the dataset to the databsae with the SqlDataAdapter
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        //Adapter gets the data from database and fill the dataset with the data
+                        sda.Fill(ds);
+                    }
+                }
+            }
+            return ds;
         }
     }
 }

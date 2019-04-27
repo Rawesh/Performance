@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PerformanceApplication.Models;
+using System.Data;
+using PerformanceApplication.Models; // use the model to call methods from the model
+
+
 
 namespace PerformanceApplication.Controllers
 {
     public class BandArtistController : Controller
     {
-
+        private BandArtist data = new BandArtist();
 
         // get list of all bands and artists
         public ActionResult Index()
         {
-            //call the model function getAll
-            BandArtist band_artist = new BandArtist();
-            band_artist.getAll();
+            //call model method getAll() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = data.getAll();
 
-            // return the view with the band_artist data
-            return View();
+            // return the view with the dataset
+            return View(ds);
         }
 
         // create an band or artist 
@@ -28,12 +31,12 @@ namespace PerformanceApplication.Controllers
             return View();
         }
 
-        //Get the post, to save it in the database.
+        //Get the post, to save it in the database
         [HttpPost]
         public ActionResult CreateSave(string name, string description)
         {
-            BandArtist band_artist = new BandArtist();
-            band_artist.insert(name, description);
+            //call the insert method in the performance model with parameters
+            data.insert(name, description);
 
             return Redirect("index");
         }

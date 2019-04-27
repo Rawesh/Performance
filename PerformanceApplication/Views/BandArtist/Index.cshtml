@@ -1,4 +1,5 @@
-﻿@model IEnumerable<PerformanceApplication.RouteConfig>
+﻿@using System.Data
+@model DataSet
 
 @{
     ViewBag.Title = "Bands and artists";
@@ -16,13 +17,15 @@
         <th>Description</th>
         <th colspan="3">Actions</th>
     </tr>
+    @foreach (DataRow row in Model.Tables[0].Rows)
+    {
+        <tr>
+            <td>@row["Name"]</td>
+            <td>@row["Description"]</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+            <td>@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</td>
 
-    <tr>
-        <td>Name of the band or artist</td>
-        <td>Description of the band or artist</td>
-        <td>@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
-        <td>@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })</td>
-        <td>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</td>
-
-    </tr>
-</table>
+        </tr>
+    }
+    </table> 
