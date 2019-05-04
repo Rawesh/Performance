@@ -12,6 +12,7 @@ namespace PerformanceApplication.Controllers
 {
     public class BandArtistController : Controller
     {
+        // use data to acces te model
         private BandArtist data = new BandArtist();
 
         // get list of all bands and artists
@@ -38,6 +39,7 @@ namespace PerformanceApplication.Controllers
             //call the insert method in the performance model with parameters
             data.Insert(name, description);
 
+            //redirect to index
             return RedirectToAction("Index");
         }
 
@@ -58,6 +60,7 @@ namespace PerformanceApplication.Controllers
             //call the update method in the performance model with parameters
             data.SaveOne(id, name, description);
 
+            // redirect to index
             return RedirectToAction("Index");
         }
 

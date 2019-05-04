@@ -11,11 +11,6 @@ namespace PerformanceApplication.Models
 {
     public class BandArtist
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-        public string Descripiton { get; set; }
-
         //insert data in database
         public void Insert(string name, string description)
         {
