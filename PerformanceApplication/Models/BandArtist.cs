@@ -17,7 +17,7 @@ namespace PerformanceApplication.Models
         public string Descripiton { get; set; }
 
         //insert data in database
-        public void insert(string name, string description)
+        public void Insert(string name, string description)
         {
             //open database connection
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
@@ -34,7 +34,7 @@ namespace PerformanceApplication.Models
             conn.Close();
         }
 
-        public virtual DataSet getAll()
+        public virtual DataSet GetAll()
         {
             //make a set of data
             DataSet ds = new DataSet();
@@ -58,7 +58,7 @@ namespace PerformanceApplication.Models
             return ds;
         }
 
-        public virtual DataSet getOne(int id)
+        public virtual DataSet GetOne(int id)
         {
             //make a set of data
             DataSet ds = new DataSet();
@@ -82,7 +82,7 @@ namespace PerformanceApplication.Models
             return ds;
         }
 
-        public void saveOne(int id, string name, string description)
+        public void SaveOne(int id, string name, string description)
         {
             //open database connection
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);

@@ -19,7 +19,7 @@ namespace PerformanceApplication.Controllers
         {
             //call model method getAll() that returns a dataset
             //put the data in a dataset to use it in the view
-            DataSet ds = data.getAll();
+            DataSet ds = data.GetAll();
 
             // return the view with the dataset
             return View(ds);
@@ -36,16 +36,16 @@ namespace PerformanceApplication.Controllers
         public ActionResult CreateSave(string name, string description)
         {
             //call the insert method in the performance model with parameters
-            data.insert(name, description);
+            data.Insert(name, description);
 
             return Redirect("index");
         }
 
         public ActionResult Edit(int id)
         {
-            //call model method getAll() that returns a dataset
+            //call model method getOne() that returns a dataset
             //put the data in a dataset to use it in the view
-            DataSet ds = data.getOne(id);
+            DataSet ds = data.GetOne(id);
 
             // return the view with the dataset
             return View(ds);
@@ -55,10 +55,20 @@ namespace PerformanceApplication.Controllers
         [HttpPost]
         public ActionResult EditSave(int id, string name, string description)
         {
-            //call the insert method in the performance model with parameters
-            data.saveOne(id, name, description);
+            //call the update method in the performance model with parameters
+            data.SaveOne(id, name, description);
 
             return Redirect("index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            //call model method getOne() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = data.GetOne(id);
+
+            // return the view with the dataset
+            return View(ds);
         }
 
     }

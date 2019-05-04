@@ -171,6 +171,7 @@
     <Content Include="Views\BandArtist\Index.cshtml" />
     <Content Include="Views\BandArtist\create.cshtml" />
     <Content Include="Views\BandArtist\edit.cshtml" />
+    <Content Include="Views\BandArtist\details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
