@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Bands and artists</h2>
+<h2>List of bands and artists</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,7 +22,7 @@
         <tr>
             <td>@row["Name"]</td>
             <td>@row["Description"]</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { @id = @row["Id"] })</td>
             <td>@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })</td>
             <td>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</td>
 
