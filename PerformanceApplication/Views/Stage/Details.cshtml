@@ -1,0 +1,32 @@
+﻿@using System.Data
+@model DataSet
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Info Stage</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        @foreach (DataRow row in Model.Tables[0].Rows)
+        {
+            <label>Name</label>
+            <br />
+            <input type="text" name="name" value="@row["Name"]" disabled />
+            <hr />
+            <br />
+
+            <label>description</label>
+            <br />
+            <input type="text" name="name" value="@row["Description"]" disabled />
+            <hr />
+            <br />
+
+            <div>
+                @Html.ActionLink("Back to List", "Index") /
+                @Html.ActionLink("Edit", "Edit", new { @id = @row["Id"] })
+            </div>
+        }
+    </dl>
+</div>

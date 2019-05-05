@@ -61,5 +61,24 @@ namespace PerformanceApplication.Controllers
             // redirect to index
             return RedirectToAction("Index");
         }
+
+        public ActionResult Details(int id)
+        {
+            //call model method getOne() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = data.GetOne(id);
+
+            // return the view with the dataset
+            return View(ds);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            //call model method DeleteOne()
+            data.DeleteOne(id);
+
+            //redirect to index
+            return RedirectToAction("Index");
+        }
     }
 }
