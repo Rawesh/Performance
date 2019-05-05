@@ -122,10 +122,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BandArtistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BandArtist.cs" />
+    <Compile Include="Models\Stage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +174,9 @@
     <Content Include="Views\BandArtist\create.cshtml" />
     <Content Include="Views\BandArtist\edit.cshtml" />
     <Content Include="Views\BandArtist\details.cshtml" />
+    <Content Include="Views\Stage\Index.cshtml" />
+    <Content Include="Views\Stage\Create.cshtml" />
+    <Content Include="Views\Stage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
