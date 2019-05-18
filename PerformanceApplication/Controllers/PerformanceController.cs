@@ -25,5 +25,19 @@ namespace PerformanceApplication.Controllers
             // return the view with the dataset
             return View(ds);
         }
+
+        // create an band or artist 
+        public ActionResult Create()
+        {
+            DataSet ds = bandArtist.GetAll();
+            DataSet ds1 = stage.GetAll();
+
+            // array of the datasets to acces in the view
+            DataSet[] dsArray = { ds, ds1 };  
+
+
+
+            return View(dsArray);
+        }
     }
 }

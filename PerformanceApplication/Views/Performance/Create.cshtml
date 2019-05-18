@@ -1,0 +1,56 @@
+﻿@using System.Data
+@model DataSet[]
+
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>create performance</h2>
+
+<form action="@Url.Action("CreateSave", "Performance")" method="post">
+    <div class="form-group">
+        <label>Band or artist</label>
+        <br />
+        <select name="band_artist_id" runat="server">
+            @foreach (DataRow row in Model[0].Tables[0].Rows)
+            {
+                <option value="@row["id"]">
+                    @row["name"]
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Stage</label>
+        <br />
+        <select name="band_artist_id" runat="server">
+            @foreach (DataRow row in Model[1].Tables[0].Rows)
+            {
+                <option value="@row["id"]">
+                    @row["name"]
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Startdate</label>
+        <br />
+        <input type="date" name="start_date" placeholder="startdate" runat="server" />
+        <input type="time" name="start_time" placeholder="starttime" runat="server" />
+    </div>
+    <div class="form-group">
+        <label>Enddate</label>
+        <br />
+        <input type="date" name="end_date" placeholder="enddate" runat="server" />
+        <input type="time" name="end_time" placeholder="endtime" runat="server" />
+    </div>
+    <input type="submit" value="create" />
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

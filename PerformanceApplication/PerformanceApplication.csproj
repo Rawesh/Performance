@@ -181,6 +181,7 @@
     <Content Include="Views\Stage\Edit.cshtml" />
     <Content Include="Views\Stage\Details.cshtml" />
     <Content Include="Views\Performance\Index.cshtml" />
+    <Content Include="Views\Performance\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
