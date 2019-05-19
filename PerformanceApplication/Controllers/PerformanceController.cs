@@ -49,7 +49,7 @@ namespace PerformanceApplication.Controllers
         public ActionResult CreateSave(string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
         {
             // check if start isn't bigger than end and end isn,t smaller than start
-            if(start_date > end_date || end_date < start_date)
+            if(start_date > end_date)
             {
                 TempData["error"] = "startdate may not be bigger than enddate and enddate may not be smaller than startdate";
                 return RedirectToAction("create");
