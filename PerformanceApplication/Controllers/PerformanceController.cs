@@ -21,7 +21,7 @@ namespace PerformanceApplication.Controllers
             //call model method getAll() that returns a dataset
             //put the data in a dataset to use it in the view
             DataSet ds = performance.GetAll();
-
+            
             // return the view with the dataset
             return View(ds);
         }
