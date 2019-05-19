@@ -1,12 +1,13 @@
 ﻿@using System.Data
 @model DataSet[]
 
-@{
+@{ 
     ViewBag.Title = "create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>create performance</h2>
+<strong>@ViewData["error"]</strong>
 
 <form action="@Url.Action("CreateSave", "Performance")" method="post">
     <div class="form-group">

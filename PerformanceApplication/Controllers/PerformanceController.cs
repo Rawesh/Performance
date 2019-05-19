@@ -33,9 +33,13 @@ namespace PerformanceApplication.Controllers
             DataSet ds1 = stage.GetAll();
 
             // array of the datasets to acces in the view
-            DataSet[] dsArray = { ds, ds1 };  
+            DataSet[] dsArray = { ds, ds1 };
 
+            // set error 
+            var message = TempData["error"];
+            if (message != null)
 
+                ViewData["error"] = message;
 
             return View(dsArray);
         }
@@ -44,6 +48,14 @@ namespace PerformanceApplication.Controllers
         [HttpPost]
         public ActionResult CreateSave(string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
         {
+            // check if start isn't bigger than end and end isn,t smaller than start
+            if(start_date > end_date || end_date < start_date)
+            {
+                TempData["error"] = "startdate may not be bigger than enddate and enddate may not be smaller than startdate";
+                return RedirectToAction("create");
+            }
+
+
             //call the insert method in the performance model with parameters
             performance.Insert(band_artist_id, stage_id, start_date.ToString(), end_date.ToString());
 
