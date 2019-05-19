@@ -42,14 +42,10 @@ namespace PerformanceApplication.Controllers
 
         //Get the post, to save it in the database
         [HttpPost]
-        public ActionResult CreateSave(string band_artist_id, string stage_id, string start_date, string start_time, string end_date, string end_time)
+        public ActionResult CreateSave(string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
         {
-            // set value of datetime
-            var start_datetime = start_date + ' ' +  start_time;
-            var end_datetime = end_date + ' ' + end_time;
-
             //call the insert method in the performance model with parameters
-            performance.Insert(band_artist_id, stage_id, start_datetime, end_datetime);
+            performance.Insert(band_artist_id, stage_id, start_date.ToString(), end_date.ToString());
 
             //redirect to index
             return RedirectToAction("Index");
