@@ -62,5 +62,20 @@ namespace PerformanceApplication.Controllers
             //redirect to index
             return RedirectToAction("Index");
         }
+
+        public ActionResult Edit(int id)
+        {
+            //call model method getOne() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = performance.GetOne(id);
+            DataSet ds1 = bandArtist.GetAll();
+            DataSet ds2 = stage.GetAll();
+
+            // array of the datasets to acces in the view
+            DataSet[] dsArray = { ds, ds1, ds2 };
+
+            // return the view with the dataset
+            return View(dsArray);
+        }
     }
 }

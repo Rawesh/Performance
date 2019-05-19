@@ -37,6 +37,34 @@ namespace PerformanceApplication.Models
             return ds;
         }
 
+        public virtual DataSet GetOne(int id)
+        {
+            //make a set of data
+            DataSet ds = new DataSet();
+
+            //make connection with the database
+            string constr = ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(constr))
+            {
+                //Make connection wth database and send query to database
+                string query = "SELECT *" +
+                               " FROM performance " +
+                               "INNER JOIN band_artist ON performance.band_artist_id = band_artist.id " +
+                               "INNER JOIN stage ON performance.stage_id = stage.id " +
+                               "where performance.id =" + id;
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    //transfering the data from the dataset to the databsae with the SqlDataAdapter
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        //Adapter gets the data from database and fill the dataset with the data
+                        sda.Fill(ds);
+                    }
+                }
+            }
+            return ds;
+        }
+
         public void Insert(string bandArtistId, string stageId, string startDatetime, string endDatetime)
         {
             //open database connection

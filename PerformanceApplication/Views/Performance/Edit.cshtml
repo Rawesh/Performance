@@ -1,0 +1,61 @@
+﻿@using System.Data
+@model DataSet[]
+
+
+@{
+    ViewBag.Title = "Edit performance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit performance</h2>
+
+<form action="@Url.Action("EditSave", "Performance")" method="post">
+    @foreach (DataRow row in Model[0].Tables[0].Rows)
+    {
+        <input type="hidden" name="id" value="@row["Id"]" runat="server" />
+        <div class="form-group">
+            <label>Band or artist</label>
+            <br />
+            <select name="band_artist_id" runat="server">
+                @foreach (DataRow data in Model[1].Tables[0].Rows)
+                {
+                    <option value="@data["id"]">
+                        @data["name"]
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Stage</label>
+            <br />
+            <select name="stage_id" runat="server">
+                @foreach (DataRow data in Model[2].Tables[0].Rows)
+                {
+                    <option value="@data["id"]">
+                        @data["name"]
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>startdate</label>
+            <br />
+            <input type="datetime-local" name="start_date" placeholder="startdate" value="@row["start_date"]" runat="server" />
+
+        </div>
+        <div class="form-group">
+            <label>enddate</label>
+            <br />
+            <input type="datetime-local" name="end_date" placeholder="enddate" value="@row["end_date"]" runat="server" />
+        </div>
+    }
+    <input type="submit" value="Save" />
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
