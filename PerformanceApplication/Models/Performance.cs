@@ -36,5 +36,24 @@ namespace PerformanceApplication.Models
             }
             return ds;
         }
+
+        public void Insert(string bandArtistId, string stageId, string startDatetime, string endDatetime)
+        {
+            //open database connection
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
+            conn.Open();
+
+            //insert the data in the database
+            string insertQuery = "INSERT INTO performance(band_artist_id, stage_id, start_date, end_date) VALUES (@band_artist_id, @stage_id, @start_date, @end_date)";
+            SqlCommand cmd = new SqlCommand(insertQuery, conn);
+            cmd.Parameters.AddWithValue("@band_artist_id", bandArtistId);
+            cmd.Parameters.AddWithValue("@stage_id", stageId);
+            cmd.Parameters.AddWithValue("@start_date", startDatetime);
+            cmd.Parameters.AddWithValue("@end_date", endDatetime);
+            cmd.ExecuteNonQuery();
+
+            //close connection
+            conn.Close();
+        }
     }
 }

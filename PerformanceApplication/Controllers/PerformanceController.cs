@@ -39,5 +39,20 @@ namespace PerformanceApplication.Controllers
 
             return View(dsArray);
         }
+
+        //Get the post, to save it in the database
+        [HttpPost]
+        public ActionResult CreateSave(string band_artist_id, string stage_id, string start_date, string start_time, string end_date, string end_time)
+        {
+            // set value of datetime
+            var start_datetime = start_date + ' ' +  start_time;
+            var end_datetime = end_date + ' ' + end_time;
+
+            //call the insert method in the performance model with parameters
+            performance.Insert(band_artist_id, stage_id, start_datetime, end_datetime);
+
+            //redirect to index
+            return RedirectToAction("Index");
+        }
     }
 }

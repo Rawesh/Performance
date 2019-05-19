@@ -24,7 +24,7 @@
     <div class="form-group">
         <label>Stage</label>
         <br />
-        <select name="band_artist_id" runat="server">
+        <select name="stage_id" runat="server">
             @foreach (DataRow row in Model[1].Tables[0].Rows)
             {
                 <option value="@row["id"]">
@@ -44,6 +44,7 @@
         <br />
         <input type="date" name="end_date" placeholder="enddate" runat="server" />
         <input type="time" name="end_time" placeholder="endtime" runat="server" />
+
     </div>
     <input type="submit" value="create" />
 </form>
