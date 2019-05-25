@@ -16,7 +16,8 @@
         <div class="form-group">
             <label>Band or artist</label>
             <br />
-            <select name="band_artist_id" runat="server">
+            <input type="text" value="@row[1]" onclick="ChangeBandToSelect(this)" runat="server" />
+            <select style="display: none;" name="band_artist_id" id="bandArtist"  runat="server">
                 @foreach (DataRow data in Model[1].Tables[0].Rows)
                 {
                     <option value="@data["id"]">
@@ -28,7 +29,8 @@
         <div class="form-group">
             <label>Stage</label>
             <br />
-            <select name="stage_id" runat="server">
+            <input type="text" value="@row[4]" onclick="ChangeStageToSelect(this)" runat="server" />
+            <select style="display: none;" id="stage" name="stage_id" runat="server">
                 @foreach (DataRow data in Model[2].Tables[0].Rows)
                 {
                     <option value="@data["id"]">
@@ -40,13 +42,13 @@
         <div class="form-group">
             <label>startdate</label>
             <br />
-            <input type="datetime" name="start_date" placeholder="@row["start_date"]" value="@row["start_date"]" runat="server" id="btn-start"  onclick="ChangeTypeStart()" onblur="LeaveStart()"/>
+            <input type="datetime" name="start_date" placeholder="@row["start_date"]" value="@row["start_date"]" runat="server" onclick="ChangeTypeStart(this)" />
 
         </div>
         <div class="form-group">
             <label>enddate</label>
             <br />
-            <input type="text" name="end_date" placeholder="@row["end_date"]" value="@row["end_date"]" runat="server" id="btn-end"  onclick="ChangeTypeEnd()" onblur="LeaveEnd()"/>
+            <input type="text" name="end_date" placeholder="@row["end_date"]" value="@row["end_date"]" runat="server" onclick="ChangeTypeEnd(this)" />
         </div>
     }
     <input type="submit" value="Save" />

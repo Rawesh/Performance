@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performances app</title>
     <script language="javascript">
-        function ChangeTypeStart() {
-            document.getElementById("btn-start").type = "datetime-local"
+        function ChangeTypeStart(input) {
+            input.type = "datetime-local";
         }
-        function ChangeTypeEnd() {
-            document.getElementById("btn-end").type = "datetime-local"
+        function ChangeTypeEnd(input) {
+            input.type = "datetime-local";
+            console.log(input);
+
+        }
+        function ChangeBandToSelect(input) {
+            input.style.display = "none";
+            document.getElementById('bandArtist').style.display= 'block';
+        }
+        function ChangeStageToSelect(input) {
+            input.style.display = "none";
+            document.getElementById('stage').style.display= 'block';
         }
     </script>
     @Styles.Render("~/Content/css")
