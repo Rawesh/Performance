@@ -11,24 +11,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>Name Artist or Band</th>
-        <th>Startdate</th>
-        <th>Enddate</th>
-        <th>Stage</th>
-        <th colspan="3">Actions</th>
-    </tr>
+<div id="layout">
     @foreach (DataRow row in Model.Tables[0].Rows)
     {
-<tr>
-    <td>@row[1]</td>
-    <td>@row[2]</td>
-    <td>@row[3]</td>
-    <td>@row[4]</td>
-    <td>@Html.ActionLink("Edit", "Edit", new { @id = @row["Id"] })</td>
-    <td>@Html.ActionLink("Details", "Details", new { @id = @row["Id"] })</td>
-    <td>@Html.ActionLink("Delete", "Delete", new { @id = @row["Id"] })</td>
-</tr>
+    <div id="selection">
+        <h4 id="date"><b>Date: @row[3] - @row[2]</b> </h4>
+        <p>Band or artist: @row[1] - (@row[4])</p>
+        @Html.ActionLink("Edit", "Edit", new { @id = @row["Id"] }) /
+        @Html.ActionLink("Details", "Details", new { @id = @row["Id"] }) /
+        @Html.ActionLink("Delete", "Delete", new { @id = @row["Id"] })
+    </div>
     }
-</table>
+</div>
