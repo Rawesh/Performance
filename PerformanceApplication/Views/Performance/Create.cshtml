@@ -16,7 +16,7 @@
         <select name="band_artist_id" runat="server">
             @foreach (DataRow row in Model[0].Tables[0].Rows)
             {
-                <option value="@row["id"]">
+                <option value="@row["id"]" >
                     @row["name"]
                 </option>
             }

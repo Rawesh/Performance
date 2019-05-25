@@ -57,7 +57,7 @@ namespace PerformanceApplication.Controllers
 
 
             //call the insert method in the performance model with parameters
-            performance.Insert(band_artist_id, stage_id, start_date.ToString(), end_date.ToString());
+            performance.Insert(band_artist_id, stage_id, start_date, end_date);
 
             //redirect to index
             return RedirectToAction("Index");
@@ -76,6 +76,27 @@ namespace PerformanceApplication.Controllers
 
             // return the view with the dataset
             return View(dsArray);
+        }
+
+        //Get the post, to save it in the database
+        [HttpPost]
+        public ActionResult EditSave(int id, string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
+        {
+            //call the update method in the performance model with parameters
+            performance.SaveOne(id, band_artist_id, stage_id, start_date, end_date);
+
+            // redirect to index
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            //call model method getOne() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = performance.GetOne(id);
+
+            // return the view with the dataset
+            return View(ds);
         }
     }
 }

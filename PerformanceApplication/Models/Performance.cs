@@ -47,11 +47,11 @@ namespace PerformanceApplication.Models
             using (SqlConnection conn = new SqlConnection(constr))
             {
                 //Make connection wth database and send query to database
-                string query = "SELECT *" +
+                string query = "SELECT performance.id, band_artist.name, performance.start_date, performance.end_date, stage.name" +
                                " FROM performance " +
                                "INNER JOIN band_artist ON performance.band_artist_id = band_artist.id " +
                                "INNER JOIN stage ON performance.stage_id = stage.id " +
-                               "where performance.id =" + id;
+                               "WHERE performance.id =" + id;
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     //transfering the data from the dataset to the databsae with the SqlDataAdapter
@@ -65,7 +65,7 @@ namespace PerformanceApplication.Models
             return ds;
         }
 
-        public void Insert(string bandArtistId, string stageId, string startDatetime, string endDatetime)
+        public void Insert(string bandArtistId, string stageId, DateTime startDatetime, DateTime endDatetime)
         {
             //open database connection
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
@@ -83,5 +83,26 @@ namespace PerformanceApplication.Models
             //close connection
             conn.Close();
         }
+
+        public void SaveOne(int id, string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
+        {
+            //open database connection
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
+            conn.Open();
+
+            //Update the data in the database
+            string insertQuery = "UPDATE performance SET band_artist_id = @b_id, stage_id = @s_id, start_date = @start, end_date = @end WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(insertQuery, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@b_id", band_artist_id);
+            cmd.Parameters.AddWithValue("@s_id", stage_id);
+            cmd.Parameters.AddWithValue("@start", start_date);
+            cmd.Parameters.AddWithValue("@end", end_date);
+            cmd.ExecuteNonQuery();
+
+            //close connection
+            conn.Close();
+        }
     }
+
 }

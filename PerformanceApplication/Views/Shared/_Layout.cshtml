@@ -1,9 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+<head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performances app</title>
+    <script language="javascript">
+        function ChangeTypeStart() {
+            document.getElementById("btn-start").type = "datetime-local"
+        }
+        function ChangeTypeEnd() {
+            document.getElementById("btn-end").type = "datetime-local"
+        }
+    </script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>

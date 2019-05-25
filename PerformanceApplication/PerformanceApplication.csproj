@@ -183,6 +183,7 @@
     <Content Include="Views\Performance\Index.cshtml" />
     <Content Include="Views\Performance\Create.cshtml" />
     <Content Include="Views\Performance\Edit.cshtml" />
+    <Content Include="Views\Performance\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

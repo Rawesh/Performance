@@ -1,0 +1,46 @@
+﻿@using System.Data
+@model DataSet
+
+@{
+    ViewBag.Title = "Performance details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Performance details</h2>
+<div>
+    <dl class="dl-horizontal">
+        @foreach (DataRow row in Model.Tables[0].Rows)
+        {
+            <label>Band or Artist</label>
+            <br />
+            <input type="text" value="@row[1]" disabled />
+            <hr />
+            <br />
+
+            <label>Band or Artist</label>
+            <br />
+            <input type="text" value="@row[4]" disabled />
+            <hr />
+            <br />
+
+            <label>Startdate</label>
+            <br />
+            <input type="text" value="@row[3]" disabled />
+            <hr />
+            <br />
+
+            <label>Enddate</label>
+            <br />
+            <input type="text" value="@row[2]" disabled />
+            <hr />
+            <br />
+
+            <div>
+                @Html.ActionLink("Back to List", "Index") /
+                @Html.ActionLink("Edit", "Edit", new { @id = @row[0] })
+            </div>
+        }
+    </dl>
+</div>
+
+
