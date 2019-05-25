@@ -103,6 +103,22 @@ namespace PerformanceApplication.Models
             //close connection
             conn.Close();
         }
+
+        public void DeleteOne(int id)
+        {
+            //open database connection
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString);
+            conn.Open();
+
+            //Update the data in the database
+            string insertQuery = "DELETE FROM performance WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(insertQuery, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+
+            //close connection
+            conn.Close();
+        }
     }
 
 }

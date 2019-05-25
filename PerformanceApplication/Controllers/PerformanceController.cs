@@ -98,5 +98,14 @@ namespace PerformanceApplication.Controllers
             // return the view with the dataset
             return View(ds);
         }
+
+        public ActionResult Delete(int id)
+        {
+            //call model method DeleteOne()
+            performance.DeleteOne(id);
+
+            //redirect to index
+            return RedirectToAction("Index");
+        }
     }
 }
