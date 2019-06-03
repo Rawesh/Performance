@@ -39,3 +39,7 @@ textarea {
 #date{
     text-decoration: underline;
 }
+
+#PrevNext{
+    margin:10px;
+}

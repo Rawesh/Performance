@@ -10,6 +10,8 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    /
+    @Html.ActionLink("View as selection", "PerformanceSelection",  new { @direction = "empty" })
 </p>
 <div id="layout">
     @foreach (DataRow row in Model.Tables[0].Rows)

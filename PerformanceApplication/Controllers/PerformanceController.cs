@@ -15,6 +15,9 @@ namespace PerformanceApplication.Controllers
         private BandArtist bandArtist = new BandArtist();
         private Stage stage = new Stage();
 
+        //loop with this var in a array
+        public int num = 0;
+
         // get a list of the performances
         public ActionResult Index()
         {
@@ -25,6 +28,46 @@ namespace PerformanceApplication.Controllers
             // return the view with the dataset
             return View(ds);
         }
+
+        public ActionResult PerformanceSelection(string direction)
+        {
+            //call model method getAll() that returns a dataset
+            //put the data in a dataset to use it in the view
+            DataSet ds = performance.GetAll();
+
+            if (direction == "down")
+            {
+                num = this.Previous();
+            }
+            else if(direction == "up")
+            {
+                num = this.Next();
+            }
+
+            // set num on 0 to take the first element
+            ViewBag.num = num;
+
+            // return the view with the dataset
+            return View(ds);
+        }
+
+        // go one place down in array
+        public int Previous()
+        {
+            this.num -= 1;
+            return this.num;
+        }
+
+        // go one place up in array
+        public int Next()
+
+        {
+            this.num += 1;
+            return this.num;
+
+        }
+
+
 
         // create an band or artist 
         public ActionResult Create()

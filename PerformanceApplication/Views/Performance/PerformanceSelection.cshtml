@@ -1,0 +1,35 @@
+﻿@using System.Data
+@model DataSet
+
+@{
+    ViewBag.Title = "Performances";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = @Model.Tables[0].Rows.Count - 1;
+}
+
+<h2>Performances election</h2>
+
+<p>
+    @Html.ActionLink("Back to list", "Index")
+</p>
+
+<div id="layout">
+    <div id="selection">
+        <h4 id="date"><b>Date: @Model.Tables[0].Rows[ViewBag.num][2] - @Model.Tables[0].Rows[ViewBag.num][3]</b> </h4>
+        <p>Band or artist: @Model.Tables[0].Rows[ViewBag.num][1] - (@Model.Tables[0].Rows[ViewBag.num][4])</p>
+        @Html.ActionLink("Edit", "Edit", new { @id = @Model.Tables[0].Rows[ViewBag.num][0] }) /
+        @Html.ActionLink("Details", "Details", new { @id = @Model.Tables[0].Rows[ViewBag.num][0] }) /
+        @Html.ActionLink("Delete", "Delete", new { @id = @Model.Tables[0].Rows[ViewBag.num][0] })
+    </div>
+    <div id="PrevNext">
+        @if (ViewBag.num > 0)
+        {
+            <button>@Html.ActionLink("<", "PerformanceSelection", new { @direction = "down" })</button>
+        }
+        @if (ViewBag.num < total && ViewBag.num != total)
+        {
+            <button>@Html.ActionLink(">", "PerformanceSelection", new { @direction = "up" })</button>
+        }
+    </div>
+</div>
+@ViewBag.num 

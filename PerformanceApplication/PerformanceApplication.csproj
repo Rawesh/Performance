@@ -184,6 +184,7 @@
     <Content Include="Views\Performance\Create.cshtml" />
     <Content Include="Views\Performance\Edit.cshtml" />
     <Content Include="Views\Performance\Details.cshtml" />
+    <Content Include="Views\Performance\PerformanceSelection.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
