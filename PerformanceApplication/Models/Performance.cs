@@ -72,10 +72,9 @@ namespace PerformanceApplication.Models
             conn.Open();
 
             //insert the data in the database if performance not exists onstage 
-            string insertQuery = "IF NOT EXISTS (SELECT 1 FROM performance WHERE stage_id = @stage_id AND @start_date BETWEEN start_date AND end_date OR @end_date BETWEEN start_date AND end_date) " +
-                                  "BEGIN " +
-                                  "INSERT INTO performance(band_artist_id, stage_id, start_date, end_date) VALUES (@band_artist_id, @stage_id, @start_date, @end_date) " +
-                                  "END";
+            string insertQuery =  "INSERT INTO performance(band_artist_id, stage_id, start_date, end_date) VALUES (@band_artist_id, @stage_id, @start_date, @end_date)" +
+                                  "SELECT @stage_id WHERE NOT EXISTS " +
+                                  "(SELECT 1 FROM performance WHERE @start_date BETWEEN start_date AND end_date OR @end_date BETWEEN start_date AND end_date)";
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
             cmd.Parameters.AddWithValue("@band_artist_id", bandArtistId);
             cmd.Parameters.AddWithValue("@stage_id", stageId);
@@ -94,10 +93,9 @@ namespace PerformanceApplication.Models
             conn.Open();
 
             //Update the data in the database
-            string insertQuery = "IF NOT EXISTS (SELECT 1 FROM performance WHERE stage_id = @s_id AND @start BETWEEN start_date AND end_date OR @end BETWEEN start_date AND end_date) " +
-                                  "BEGIN " +
-                                  "UPDATE performance SET band_artist_id = @b_id, stage_id = @s_id, start_date = @start, end_date = @end WHERE id = @id " +
-                                  "END";
+            string insertQuery = "UPDATE performance SET band_artist_id = @b_id, stage_id = @s_id, start_date = @start, end_date = @end WHERE id = @id " +
+                                 "SELECT @s_id WHERE NOT EXISTS " +
+                                 "(SELECT 1 FROM performance WHERE @start BETWEEN start_date AND end_date OR @end BETWEEN start_date AND end_date)";
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@b_id", band_artist_id);
