@@ -96,6 +96,12 @@ namespace PerformanceApplication.Controllers
             DataSet ds1 = bandArtist.GetAll();
             DataSet ds2 = stage.GetAll();
 
+            // set error 
+            var message = TempData["error"];
+            if (message != null)
+
+                ViewData["error"] = message;
+
             // array of the datasets to acces in the view
             DataSet[] dsArray = { ds, ds1, ds2 };
 
@@ -107,6 +113,13 @@ namespace PerformanceApplication.Controllers
         [HttpPost]
         public ActionResult EditSave(int id, string band_artist_id, string stage_id, DateTime start_date, DateTime end_date)
         {
+            // check if start isn't bigger than end and end isn,t smaller than start
+            if (start_date > end_date)
+            {
+                TempData["error"] = "startdate may not be bigger than enddate and enddate may not be smaller than startdate";
+                return RedirectToAction("Edit", new { @id = id});
+            }
+
             //call the update method in the performance model with parameters
             performance.SaveOne(id, band_artist_id, stage_id, start_date, end_date);
 

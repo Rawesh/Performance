@@ -5,9 +5,13 @@
     ViewBag.Title = "create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>create performance</h2>
-<strong>@ViewData["error"]</strong>
+<div class="alert alert-warning">
+    <strong>Warning!</strong>
+    Cannot make a performance with the same start and enddate on a stage, that alreay exists
+    <br />
+    <strong>@ViewData["error"]</strong>
+</div>
 
 <form action="@Url.Action("CreateSave", "Performance")" method="post">
     <div class="form-group">
@@ -50,6 +54,7 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

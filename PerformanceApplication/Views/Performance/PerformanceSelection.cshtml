@@ -24,11 +24,11 @@
     <div id="PrevNext">
         @if (ViewBag.num > 0)
         {
-            <button>@Html.ActionLink("<", "PerformanceSelection", new { @direction = "down" })</button>
+            <button>@Html.ActionLink("Prev", "PerformanceSelection", new { @direction = "down" })</button>
         }
         @if (ViewBag.num < total && ViewBag.num != total)
         {
-            <button>@Html.ActionLink(">", "PerformanceSelection", new { @direction = "up" })</button>
+            <button>@Html.ActionLink("Next", "PerformanceSelection", new { @direction = "up" })</button>
         }
     </div>
 </div>
