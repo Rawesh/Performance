@@ -35,6 +35,7 @@ namespace PerformanceApplication.Controllers
             //put the data in a dataset to use it in the view
             DataSet ds = performance.GetAll();
 
+            // with this block of code we can determine te place of the array
             if (direction == "down")
             {
                 num -= 1;
