@@ -16,7 +16,7 @@ namespace PerformanceApplication.Controllers
         private Stage stage = new Stage();
 
         //loop with this var in a array
-        public int num = 0;
+        static int num = 0;
 
         // get a list of the performances
         public ActionResult Index()
@@ -37,37 +37,18 @@ namespace PerformanceApplication.Controllers
 
             if (direction == "down")
             {
-                num = this.Previous();
+                num -= 1;
             }
-            else if(direction == "up")
+            if (direction == "up")
             {
-                num = this.Next();
+                num += 1;
             }
 
-            // set num on 0 to take the first element
-            ViewBag.num = num;
+            ViewBag.num =  num;
 
             // return the view with the dataset
             return View(ds);
         }
-
-        // go one place down in array
-        public int Previous()
-        {
-            this.num -= 1;
-            return this.num;
-        }
-
-        // go one place up in array
-        public int Next()
-
-        {
-            this.num += 1;
-            return this.num;
-
-        }
-
-
 
         // create an band or artist 
         public ActionResult Create()
