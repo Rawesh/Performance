@@ -20,7 +20,7 @@ namespace PerformanceApplication.Models
             using (SqlConnection conn = new SqlConnection(constr))
             {
                 //Make connection wth database and send query to database
-                string query = "SELECT performance.id, band_artist.name, performance.start_date, performance.end_date, stage.name" +
+                string query = "SELECT performance.id, band_artist.name, FORMAT(performance.start_date, 'dd-MM-yyyy HH:mm'), FORMAT(performance.end_date, 'dd-MM-yyyy HH:mm'), stage.name" +
                                 " FROM performance " +
                                 "INNER JOIN band_artist ON performance.band_artist_id = band_artist.id " +
                                 "INNER JOIN stage ON performance.stage_id = stage.id";
